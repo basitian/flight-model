@@ -1,40 +1,40 @@
 'use strict';
 
-var fs = require('fs');
-var input = require('./input.json');
+var inputAircraft = process.env.AC_TYPE || "A350";
+var depAirport = process.env.DEP_PORT || "HAM";
 var airports = require('./airports.json');
 
 var determineStatus = () => {
-    console.log('\nDetermining Status\n');
-    getDestination();
-    console.log('\nFinished\n');
-}
+    console.log('\nDetermining Status');
+    var arrAirport = getDestination();
+    var status = new Status(depAirport, arrAirport.airport_code);
+    console.log('Status: ' + JSON.stringify(status));
+};
 
 var getDestination = () => {
     var matchFound;
     var index = 0;
     var inputAirport = airports.find(port => {
-        return port.airport_code === input.departure;
+        return port.airport_code === depAirport;
     });
 
     while (!matchFound) {
         var port = airports[index];
-        if (port.airport_code !== inputAirport.airport_code && (getDistance(inputAirport, port) === getAircraftType(input))) {
+        if (port.airport_code !== inputAirport.airport_code &&
+            (getDistance(inputAirport, port) === getAircraftType(inputAircraft))) {
             matchFound = port;
         } else {
             index++;
         }
     }
 
-    if (!matchFound) {
-        console.log('\nNo match found\n');
-    } else {
-        console.log('\nMatch found: ' + JSON.stringify(port) + '\n');
-    }
-}
+    return matchFound;
+};
 
 var getDistance = (airport1, airport2) => {
-    var distance = Math.sqrt(Math.pow(airport1.longitude - airport2.longitude, 2) + Math.pow(airport1.latitude - airport2.latitude, 2));
+    var distance = Math.sqrt(
+        Math.pow(airport1.longitude - airport2.longitude, 2) +
+        Math.pow(airport1.latitude - airport2.latitude, 2));
     if (distance > 5) {
         if (distance > 10) {
             return 'LONG_DISTANCE';
@@ -44,11 +44,11 @@ var getDistance = (airport1, airport2) => {
     } else {
         return 'SHORT_DISTANCE';
     }
-}
+};
 
-var getAircraftType = (input) => {
+var getAircraftType = (acType) => {
     var type;
-    switch(input.type) {
+    switch (acType) {
         case "707":  
         case "747":
         case "767":
@@ -95,14 +95,12 @@ var getAircraftType = (input) => {
             type = 'SHORT_DISTANCE';
     }
     return type;
-}
+};
 
 class Status {
-    constructor(depAirport, arrAirport, start, end) {
+    constructor(depAirport, arrAirport) {
         this.depAirport = depAirport;
         this.arrAirport = arrAirport;
-        this.start = start;
-        this.end = end;
     }
 }
 
