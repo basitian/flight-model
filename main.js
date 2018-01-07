@@ -1,106 +1,43 @@
 'use strict';
 
-var inputAircraft = process.env.AC_TYPE || "A350";
-var depAirport = process.env.DEP_PORT || "HAM";
-var airports = require('./airports.json');
+let airports = require('./airports.json');
 
-var determineStatus = () => {
-    console.log('\nDetermining Status');
-    var arrAirport = getDestination();
-    var status = new Status(depAirport, arrAirport.airport_code);
+let determineStatus = () => {
+    let status = new Status(getDestination().airport_code, getDestination().airport_code, new Date(), getEnd());
     console.log('Status: ' + JSON.stringify(status));
 };
 
-var getDestination = () => {
-    var matchFound;
-    var index = 0;
-    var inputAirport = airports.find(port => {
-        return port.airport_code === depAirport;
-    });
-
-    while (!matchFound) {
-        var port = airports[index];
-        if (port.airport_code !== inputAirport.airport_code &&
-            (getDistance(inputAirport, port) === getAircraftType(inputAircraft))) {
-            matchFound = port;
-        } else {
-            index++;
-        }
-    }
-
-    return matchFound;
+let getDestination = () => {
+    let randomIndex = Math.floor(Math.random() * airports.length);
+    return airports[randomIndex];
 };
 
-var getDistance = (airport1, airport2) => {
-    var distance = Math.sqrt(
-        Math.pow(airport1.longitude - airport2.longitude, 2) +
-        Math.pow(airport1.latitude - airport2.latitude, 2));
-    if (distance > 5) {
-        if (distance > 10) {
-            return 'LONG_DISTANCE';
-        } else {
-            return 'MIDDLE_DISTANCE';
-        }
-    } else {
-        return 'SHORT_DISTANCE';
-    }
+let getEnd = () => {
+    let now = new Date();
+    return new Date(now.getTime() + (Math.floor((Math.random() * 64800000) + 60000)));
 };
 
-var getAircraftType = (acType) => {
-    var type;
-    switch (acType) {
-        case "707":  
-        case "747":
-        case "767":
-        case "777":
-        case "787":
-        case "A310":
-        case "A330":
-        case "A340":
-        case "A350":
-        case "A380":
-        case "Il-62":
-        case "Il-86":
-        case "Il-96":
-        case "L-1011 TriStar":
-        case "MD-11":
-        case "DC-10":
-        case "Tu-114":
-        case "Tu-116":
-        case "Tu-144":
-            type = 'LONG_DISTANCE';
-            break;
-        case "A300":
-        case "A318":
-        case "A319":
-        case "A320":
-        case "A321":
-        case "717":
-        case "727":
-        case "737 (CFMI)":
-        case "737 (JT8D)":
-        case "737 (Max)":
-        case "737 (NG)":
-        case "757":
-        case "CSeries":
-        case "DC-9":
-        case "MD-90":
-        case "Superjet 100":
-        case "Tu-154":
-        case "Tu-204":
-        case "Tu-334":
-            type = 'MIDDLE_DISTANCE';
-            break;
-        default:
-            type = 'SHORT_DISTANCE';
-    }
-    return type;
-};
 
 class Status {
-    constructor(depAirport, arrAirport) {
-        this.depAirport = depAirport;
-        this.arrAirport = arrAirport;
+    constructor(depAirport, arrAirport, start, end) {
+        this.aircraftId = "123498765";
+        this.detailName = "AircraftStatus";
+        this.status = "AIRBORNE";
+        this.beginStatusLocation = new Airport(depAirport);
+        this.endStatusLocation = new Airport(arrAirport);
+        this.beginStatusTime = start;
+        this.endStatusTime = end;
+        this.currentFlightNo = "AV1234";
+        this.currentFlightNoIcao = "AVI1234";
+        this.eventType = null;
+        this.eventName = null;
+    }
+}
+
+class Airport {
+    constructor(code) {
+        this.code = code;
+        this.href = "/airports/" + code;
     }
 }
 
