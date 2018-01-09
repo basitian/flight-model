@@ -1,0 +1,978 @@
+[
+  {
+    "ac_type_name": "707",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "717",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "720",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "727",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "737 (CFMI)",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "737 (JT8D)",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "737 (Max)",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "737 (NG)",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "747",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "757",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "767",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "777",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "787",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "A310",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A318",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "A319",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "A320",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "A321",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "A330",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A340",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A350",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A380",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "A400M",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-12",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-124",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-140",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-148",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-158",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-22",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-225",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-24",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-26",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-28 / M28",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-3",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-30",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-32",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-38",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-72",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "An-74",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Arava",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ARJ21",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ATP",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ATR 42",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ATR 72",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "BAe 146",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "BD-700 (Global 6000/Global Express)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Be-200",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Beech 18",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Beech 1900",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Beech 2000 Starship",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Beech 99",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "BN-2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "BN-2A Mk.III Trislander",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "C-130/L-100 Hercules",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "C-135",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "C-160",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "C-17",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "C-27",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CASA C-212",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CASA C-295",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CASA CN-235",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Cessna 208 Caravan",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Cessna 421",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Cessna 425",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Cessna 441",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Challenger 300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Challenger 350",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Challenger 600 / 601 / 604 / 605",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Challenger 650",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Bravo (Cessna 550)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Encore (Cessna 560)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Excel (Cessna 560XL)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation I (Cessna 500)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation II (Cessna 550)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation III (Cessna 650)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Latitude (Cessna 680A)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation M2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Mustang (Cessna 510)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation S/II (Cessna S550)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Sovereign (Cessna 680)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation Ultra (Cessna 560)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation V (Cessna 560)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation VI (Cessna 660)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation VII (Cessna 650)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation X (Cessna 750)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Citation XLS (Cessna 560XLS)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CitationJet CJ1 (Cessna 525)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CitationJet CJ2 (Cessna 525A)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CitationJet CJ3 (Cessna 525B)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CitationJet CJ4 (Cessna 525C)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CL-215",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CL-415",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Convair 580",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Convair 600",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Convair 640",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Corvette",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CRJ100/200",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CRJ1000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CRJ700",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CRJ900",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "CSeries",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "DC-10",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "DC-3",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DC-8",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DC-9",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-3",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-4T",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-5",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-6",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-7",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "DHC-8",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Dornier 228",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Dornier 328",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Dornier 328JET",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "E170",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "E175",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "E190",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "E195",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Eclipse 500",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "EMB-110",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "EMB-120",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "EMB-121",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ERJ-135",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ERJ-140",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "ERJ-145",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "F-27",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "F406",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 10/100",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 20/200",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 2000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 50",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 5X",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 7X",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 8X",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Falcon 900",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "FH-227",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker 100",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker 50",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker 60",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker 70",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker F.27",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Fokker F.28",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "G-1159 Gulfstream II",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "G-1159A Gulfstream III",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "G-159 Gulfstream I",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Global 5000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Global Express / Global 6000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G100 / IAI 1125 Astra",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G150",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G200 / IAI Galaxy",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G280",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G350",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G400",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G450",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G550",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream G650",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream IV",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Gulfstream V",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "HA-420 HondaJet",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Hawker 400 / Beechjet 400",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Hawker 4000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "HS 748",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "HS125/Hawker",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "IAI 1123/1124 Westwind",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-114",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-18",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-62",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-76",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-86",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "Il-96",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "Jetstar (L-1329/L-329)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Jetstream 31",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Jetstream 41",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "KC-390",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "King Air 100",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "King Air 200",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "King Air 300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "King Air 350",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "King Air 90",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Kodiak 100",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "L-1011 TriStar",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "L-188 Electra",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "L-410",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 24",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 25",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 31",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 35",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 36",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 40",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 45",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 55",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 60",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Learjet 75",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Legacy 450",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Legacy 500",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MA60",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MD-11",
+    "type": "LONG_DISTANCE"
+  },
+  {
+    "ac_type_name": "MD-80",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MD-90",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "Merlin II",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Merlin III",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Merlin IV/Metro",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MRJ",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MU-2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "MU300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "NA265",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Nomad",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Nord 262",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "One-Eleven",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "P-750",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "P.180",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PA-31T",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PA-42",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PA-46",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PC-12",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PC-24",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "PC-6",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Phenom 100",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Phenom 300",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Premier I",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "RJ",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "S-2",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Saab 2000",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Saab 340",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Sabreliner",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "SC.5 Belfast",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "SC.7 Skyvan",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Short 330 (SD3-30)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Short 360 (SD3-60)",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Superjet 100",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "TBM 700 / 850 / 900",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Tu-134",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Tu-154",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "Tu-204",
+    "type": "MIDDLE_DISTANCE"
+  },
+  {
+    "ac_type_name": "Turbo Commander",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Y-12",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Y-8",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Yak-40",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "Yak-42",
+    "type": "SHORT_DISTANCE"
+  },
+  {
+    "ac_type_name": "YS-11",
+    "type": "SHORT_DISTANCE"
+  }
+]
