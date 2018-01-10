@@ -8,9 +8,9 @@ exports.determineStatus = aircraft => {
     for (let i = 0; i < 5; i++) {
         let status = new Status(aircraft, predecessor);
         statusList.push(status);
-        console.log(JSON.stringify(status));
         predecessor = status;
     }
+    console.log(JSON.stringify(statusList));
     return statusList;
 };
 
@@ -70,7 +70,6 @@ class Status {
         let routeType;
         // let distance = Math.floor(Math.sqrt((Math.pow((dep.longitude - arr.longitude), 2) + Math.pow((dep.latitude - arr.latitude), 2))));
         let distance = calculateDistance(dep.latitude, dep.longitude, arr.latitude, arr.longitude);
-        console.log(distance);
         if (distance > 5000) {
             routeType = "LONG_DISTANCE";
         } else if (distance > 2000) {
