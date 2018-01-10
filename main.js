@@ -1,6 +1,6 @@
 'use strict';
 let model = require('./model.js');
 
-let acType = process.env.AC_TYPE || 'A320';
+let args = process.argv.slice(2);
 
-model.determineStatus(acType);
+console.log(JSON.stringify(model.determineStatus(args[0] || 'A320')));

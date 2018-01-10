@@ -10,7 +10,7 @@ exports.determineStatus = aircraft => {
         statusList.push(status);
         predecessor = status;
     }
-    console.log(JSON.stringify(statusList));
+    // console.log(JSON.stringify(statusList));
     return statusList;
 };
 
@@ -62,13 +62,12 @@ class Status {
     }
 
     validateFlightType(acFlightType, dep, arr) {
-        return (acFlightType === this.determineDistance(dep, arr));
+        return (acFlightType === this.determineDistanceType(dep, arr));
     }
 
 
-    determineDistance(dep, arr) {
+    determineDistanceType(dep, arr) {
         let routeType;
-        // let distance = Math.floor(Math.sqrt((Math.pow((dep.longitude - arr.longitude), 2) + Math.pow((dep.latitude - arr.latitude), 2))));
         let distance = calculateDistance(dep.latitude, dep.longitude, arr.latitude, arr.longitude);
         if (distance > 5000) {
             routeType = "LONG_DISTANCE";
@@ -106,9 +105,8 @@ let calculateDistance = (lat1, long1, lat2, long2) => {
     let lat2Rad = degreesToRadians(lat2);
     let long2Rad = degreesToRadians(long2);
 
-    let centralAngle = Math.abs(Math.atan(Math.sqrt(Math.pow(Math.cos(lat2Rad) * Math.sin(Math.abs(long1Rad - long2Rad)), 2) +
-        Math.pow((Math.cos(lat1Rad) * Math.sin(lat2Rad)) - (Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(Math.abs(long1Rad - long2Rad))), 2)) /
-        ((Math.sin(lat1Rad) * Math.sin(lat2Rad)) + (Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.cos(Math.abs(long1Rad - long2Rad))))));
+    let centralAngle = Math.abs((Math.sin(lat1Rad) * Math.sin(lat2Rad)) +
+        (Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.cos(Math.abs(long1Rad - long2Rad))));
     return centralAngle * EARTH_RADIUS_KM;
 };
 
