@@ -1,6 +1,48 @@
 'use strict';
 let airports = require('./airports.json');
 let aircrafts = require('./ac_types.json');
+let defineProbability = require('./define-probability');
+let statusProbs = require('./status-prob.json');
+
+let status = Object.freeze({
+    AIRBORNE: {
+        name: "AIRBORNE",
+    },
+    ONGROUND: {
+        name: "ONGROUND",
+        duration: 183
+    },
+    MAINTENANCE: {
+        name: "MAINTENANCE",
+        duration: 732
+    },
+    OVERHAUL: {
+        name: "OVERHAUL",
+        duration: 0
+    },
+    UNPLANNEDMAINTENANCE: {
+        name: "UNPLANNEDMAINTENANCE",
+        duration: 0
+    },
+    UNKNOWN: {
+        name: "UNKNOWN",
+        duration: 0
+    }
+});
+let routeType = Object.freeze({
+    LONG_DISTANCE: {
+        name: 'LONG_DISTANCE',
+        speed: 14.502
+    },
+    MIDDLE_DISTANCE: {
+        name: 'MIDDLE_DISTANCE',
+        speed: 11.986
+    },
+    SHORT_DISTANCE: {
+        name: 'SHORT_DISTANCE',
+        speed: 8.729
+    }
+});
 
 exports.determineStatus = aircraft => {
     let statusList = [];
@@ -15,67 +57,81 @@ exports.determineStatus = aircraft => {
 
 class Status {
     constructor(aircraft, predecessor) {
-        if (predecessor !== null ) {
-            this.aircraftId = predecessor.aircraftId;
-        } else {
-            this.aircraftId = Math.floor((Math.random() * 899999999) + 100000000);
-        }
-        this.detailName = "AircraftStatus";
+        this.determineStatusType(predecessor);
+        this.detailName = 'AircraftStatus';
         this.updatedTimestamp = 0;
-        this.status = "AIRBORNE";
-        let flightNo = Math.floor((Math.random() * 8999) + 1000);
-        this.currentFlightNo = "AV" + flightNo;
-        this.currentFlightNoIcao = "AVI" + flightNo;
         this.eventType = null;
         this.eventName = null;
 
-        this.determineAirports(predecessor, aircraft);
-        this.determineTimes(predecessor);
+        let acFlightType = this.determineFlightType(aircraft);
+        this.determineAirports(predecessor, acFlightType);
+        this.determineTimes(predecessor, acFlightType);
+        this.beginStatusLocation = new Airport(this.beginStatusLocation.airport_code);
+        this.endStatusLocation = new Airport(this.endStatusLocation.airport_code);
     }
 
-    determineAirports(predecessor, aircraft) {
+    determineStatusType(predecessor) {
+        if (predecessor !== null) {
+            this.aircraftId = predecessor.aircraftId;
+            if (predecessor.status === status.AIRBORNE.name) {
+                this.status = defineProbability(statusProbs);
+            } else {
+                this.setAirborne();
+            }
+        } else {
+            this.aircraftId = Math.floor((Math.random() * 899999999) + 100000000);
+            this.setAirborne();
+        }
+    }
+
+    setAirborne() {
+        this.status = status.AIRBORNE.name;
+        let flightNo = Math.floor((Math.random() * 8999) + 1000);
+        this.currentFlightNo = 'AV' + flightNo;
+        this.currentFlightNoIcao = 'AVI' + flightNo;
+    }
+
+    determineAirports(predecessor, acFlightType) {
         let airportList = airports;
         if (predecessor !== null) {
-            this.beginStatusLocation = predecessor.endStatusLocation;
+            this.beginStatusLocation = airportList.find(port => {
+                return port.airport_code === predecessor.endStatusLocation.code;
+            });
         } else {
             let randomIndex = Math.floor(Math.random() * airports.length);
-            this.beginStatusLocation = new Airport(airportList[randomIndex].airport_code);
+            this.beginStatusLocation = airportList[randomIndex];
         }
-        if (this.status === 'AIRBORNE') {
-            let depAirport = airportList.find(port => {
-                return port.airport_code === this.beginStatusLocation.code;
-            });
-            let indexToRemove = airportList.indexOf(depAirport);
+        if (this.status === status.AIRBORNE.name) {
+            let indexToRemove = airportList.indexOf(this.beginStatusLocation);
             airportList.splice(indexToRemove, 1);
-            let acFlightType = this.determineFlightType(aircraft);
             while (this.endStatusLocation === undefined) {
                 let randomIndex = Math.floor(Math.random() * airports.length);
                 let airport = airportList[randomIndex];
-                if (this.validateFlightType(acFlightType, depAirport, airport) === true) {
-                    this.endStatusLocation = new Airport(airport.airport_code);
+                if (this.validateFlightType(acFlightType, this.beginStatusLocation, airport) === true) {
+                    this.endStatusLocation = airport;
                 }
             }
         } else {
-            this.endStatusLocation = new Airport(this.beginStatusLocation.code);
+            this.endStatusLocation = this.beginStatusLocation;
         }
     }
 
     validateFlightType(acFlightType, dep, arr) {
-        return (acFlightType === this.determineDistanceType(dep, arr));
+        let distance = calculateDistance(dep, arr);
+        return (acFlightType === this.determineDistanceType(distance));
     }
 
 
-    determineDistanceType(dep, arr) {
-        let routeType;
-        let distance = calculateDistance(dep.latitude, dep.longitude, arr.latitude, arr.longitude);
+    determineDistanceType(distance) {
+        let flightType;
         if (distance > 5000) {
-            routeType = "LONG_DISTANCE";
+            flightType = routeType.LONG_DISTANCE.name;
         } else if (distance > 2000) {
-            routeType = "MIDDLE_DISTANCE";
+            flightType = routeType.MIDDLE_DISTANCE.name;
         } else {
-            routeType = "SHORT_DISTANCE";
+            flightType = routeType.SHORT_DISTANCE.name;
         }
-        return routeType;
+        return flightType;
     }
 
     determineFlightType(aircraft) {
@@ -85,26 +141,58 @@ class Status {
         return flightType.type;
     };
 
-    determineTimes(predecessor) {
+    determineTimes(predecessor, flightType) {
         if (predecessor !== null) {
             this.beginStatusTime = predecessor.endStatusTime;
         } else {
             this.beginStatusTime = new Date();
         }
-        this.endStatusTime = new Date(this.beginStatusTime.getTime() + (Math.floor((Math.random() * 64800000) + 60000)));
+        let duration;
+        switch (this.status) {
+            case status.AIRBORNE.name:
+                let distance = calculateDistance(this.beginStatusLocation, this.endStatusLocation);
+                let flightSpeed;
+                switch (flightType) {
+                    case routeType.LONG_DISTANCE.name:
+                        flightSpeed = routeType.LONG_DISTANCE.speed;
+                        break;
+                    case routeType.MIDDLE_DISTANCE.name:
+                        flightSpeed = routeType.MIDDLE_DISTANCE.speed;
+                        break;
+                    case routeType.SHORT_DISTANCE.name:
+                        flightSpeed = routeType.SHORT_DISTANCE.speed;
+                        break;
+                }
+                duration = Math.floor(distance / flightSpeed);
+                break;
+            case status.MAINTENANCE.name:
+                duration = status.MAINTENANCE.duration;
+                break;
+            case status.ONGROUND.name:
+                duration = status.ONGROUND.duration;
+                break;
+            case status.OVERHAUL.name:
+                duration = status.OVERHAUL.duration;
+                break;
+            case status.UNPLANNEDMAINTENANCE.name:
+                duration = status.UNPLANNEDMAINTENANCE.duration;
+                break;
+            default:
+                duration = status.UNKNOWN;
+        }
+        this.endStatusTime = new Date(this.beginStatusTime.getTime() + (duration * 60000));
     };
 }
 
-let calculateDistance = (lat1, long1, lat2, long2) => {
-
+let calculateDistance = (dep, arr) => {
     const EARTH_RADIUS_KM = 6371.009;
 
-    let lat1Rad = degreesToRadians(lat1);
-    let long1Rad = degreesToRadians(long1);
-    let lat2Rad = degreesToRadians(lat2);
-    let long2Rad = degreesToRadians(long2);
+    let lat1Rad = degreesToRadians(dep.latitude);
+    let long1Rad = degreesToRadians(dep.longitude);
+    let lat2Rad = degreesToRadians(arr.latitude);
+    let long2Rad = degreesToRadians(arr.longitude);
 
-    let centralAngle = Math.abs((Math.sin(lat1Rad) * Math.sin(lat2Rad)) +
+    let centralAngle = Math.acos((Math.sin(lat1Rad) * Math.sin(lat2Rad)) +
         (Math.cos(lat1Rad) * Math.cos(lat2Rad) * Math.cos(Math.abs(long1Rad - long2Rad))));
     return centralAngle * EARTH_RADIUS_KM;
 };

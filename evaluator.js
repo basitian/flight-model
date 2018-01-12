@@ -1,83 +1,58 @@
 'use strict';
 let model = require('./model.js');
-let aircrafts = require('./ac_types.json');
 let airports = require('./airports.json');
 
 let args = process.argv.slice(2);
 let acType = args[0] || 'A320';
 
-let findDuplicates = (result) => {
+let statusList = Object.freeze({
+    AIRBORNE: {
+        name: "AIRBORNE",
+    },
+    ONGROUND: {
+        name: "ONGROUND",
+        duration: 183
+    },
+    MAINTENANCE: {
+        name: "MAINTENANCE",
+        duration: 732
+    },
+    OVERHAUL: {
+        name: "OVERHAUL",
+        duration: 0
+    },
+    UNPLANNEDMAINTENANCE: {
+        name: "UNPLANNEDMAINTENANCE",
+        duration: 0
+    },
+    UNKNOWN: {
+        name: "UNKNOWN",
+        duration: 0
+    }
+});
+
+let findLocationErrors = (result) => {
     let duplicates = 0;
-    for (let i = 0; i < result.length; i ++) {
+    for (let i = 0; i < result.length; i++) {
         let status = result[i];
-        if (status.status === 'AIRBORNE' && status.beginStatusLocation.code === status.endStatusLocation.code) {
-            duplicates = duplicates + 1;
+        if (status.status === statusList.AIRBORNE.name) {
+            if (status.beginStatusLocation.code === status.endStatusLocation.code) {
+                duplicates = duplicates + 1;
+            }
+        } else {
+            if (status.beginStatusLocation.code !== status.endStatusLocation.code) {
+                duplicates = duplicates + 1;
+            }
         }
     }
     return duplicates;
 };
 
-let findFlightTypeErrors = (result) => {
-    let acFlightType = aircrafts.find(ac => {
-        return ac.ac_type_name === acType;
-    }).type;
-
-    let typeErrors = 0;
-    for (let i = 0; i < result.length; i++) {
-        let status = result[i];
-        let dep = airports.find(port => {
-            return port.airport_code === status.beginStatusLocation.code;
-        });
-        let arr = airports.find(port => {
-            return port.airport_code === status.endStatusLocation.code;
-        });
-        if (acFlightType !== determineDistance(dep, arr)) {
-            typeErrors = typeErrors + 1;
-        }
-    }
-    return typeErrors;
-};
-
-let determineDistance = (dep, arr) => {
-    let routeType;
-    let distance = calculateDistance(dep.latitude, dep.longitude, arr.latitude, arr.longitude);
-    if (distance >= 5000) {
-        routeType = "LONG_DISTANCE";
-    } else if (distance >= 2000) {
-        routeType = "MIDDLE_DISTANCE";
-    } else {
-        routeType = "SHORT_DISTANCE";
-    }
-    return routeType;
-};
-
-let calculateDistance = (lat1, long1, lat2, long2) => {
-
-    const EARTH_RADIUS_KM = 6371.009;
-
-    let lat1Rad = degreesToRadians(lat1);
-    let long1Rad = degreesToRadians(long1);
-    let lat2Rad = degreesToRadians(lat2);
-    let long2Rad = degreesToRadians(long2);
-
-    let centralAngle = Math.abs(Math.atan(Math.sqrt(Math.pow(Math.cos(lat2Rad) *
-        Math.sin(Math.abs(long1Rad - long2Rad)), 2) +
-        Math.pow((Math.cos(lat1Rad) * Math.sin(lat2Rad)) - (Math.sin(lat1Rad) * Math.cos(lat2Rad) *
-            Math.cos(Math.abs(long1Rad - long2Rad))), 2)) /
-        ((Math.sin(lat1Rad) * Math.sin(lat2Rad)) + (Math.cos(lat1Rad) * Math.cos(lat2Rad) *
-            Math.cos(Math.abs(long1Rad - long2Rad))))));
-    return centralAngle * EARTH_RADIUS_KM;
-};
-
-let degreesToRadians = (number) => {
-    return (number * (Math.PI / 180));
-};
-
 let findWrongTime = (result) => {
     let timeErrors = 0;
-    for (let i = 0; i < result.length; i ++) {
+    for (let i = 0; i < result.length; i++) {
         let status = result[i];
-        if (status.beginStatusTime >= status.endStatusTime) {
+        if (status.beginStatusTime > status.endStatusTime) {
             timeErrors = timeErrors + 1;
         }
     }
@@ -96,24 +71,35 @@ let findTimeOverlap = (result) => {
     return timeErrors;
 };
 
+let findDurationErrors = (result) => {
+    let durationErrors = 0;
+    for (let i = 0; i < result.length; i++) {
+        let status = result[i];
+        let duration = (status.endStatusTime - status.beginStatusTime) / 60000;
+        let statusType = statusList[status.status];
+        if (duration !== statusType.duration && statusType !== statusList.AIRBORNE) {
+            durationErrors = durationErrors + 1;
+        }
+    }
+    return durationErrors;
+};
 
 let evaluate = () => {
     let timeErrors = 0;
-    let airportDuplicates = 0;
+    let locationErrors = 0;
     let timeOverlaps = 0;
-    let flightTypeErrors = 0;
-    for (let i = 1; i < 1000; i++) {
+    let durationErrors = 0;
+    for (let i = 0; i < 1; i++) {
         let result = model.determineStatus(acType);
         timeErrors = timeErrors + findWrongTime(result);
-        airportDuplicates = airportDuplicates + findDuplicates(result);
+        locationErrors = locationErrors + findLocationErrors(result);
         timeOverlaps = timeOverlaps + findTimeOverlap(result);
-        // Does not work yet!
-        // flightTypeErrors = flightTypeErrors + findFlightTypeErrors(result);
+        durationErrors = durationErrors + findDurationErrors(result);
     }
-    console.log('Number of duplicates: ' + airportDuplicates);
+    console.log('Number of location errors: ' + locationErrors);
     console.log('Number of time errors: ' + timeErrors);
     console.log('Number of time overlaps: ' + timeOverlaps);
-    console.log('Number of flight type errors: ' + flightTypeErrors);
+    console.log('Number of duration Errors: ' + durationErrors);
 };
 
 evaluate();

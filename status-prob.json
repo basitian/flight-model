@@ -1,0 +1,22 @@
+[
+  {
+    "value": "ONGROUND",
+    "prob": 0.8553
+  },
+  {
+    "value": "MAINTENANCE",
+    "prob": 0.1447
+  },
+  {
+    "value": "OVERHAUL",
+    "prob": 0
+  },
+  {
+    "value": "UNPLANNEDMAINTENANCE",
+    "prob": 0
+  },
+  {
+    "value": "UNKNOWN",
+    "prob": 0
+  }
+]
