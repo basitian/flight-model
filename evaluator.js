@@ -3,13 +3,14 @@ let model = require('./model.js');
 let aircrafts = require('./ac_types.json');
 let airports = require('./airports.json');
 
-let acType = process.env.AC_TYPE || 'A320';
+let args = process.argv.slice(2);
+let acType = args[0] || 'A320';
 
 let findDuplicates = (result) => {
     let duplicates = 0;
     for (let i = 0; i < result.length; i ++) {
         let status = result[i];
-        if (status.beginStatusLocation.code === status.endStatusLocation.code) {
+        if (status.status === 'AIRBORNE' && status.beginStatusLocation.code === status.endStatusLocation.code) {
             duplicates = duplicates + 1;
         }
     }
@@ -24,11 +25,9 @@ let findFlightTypeErrors = (result) => {
     let typeErrors = 0;
     for (let i = 0; i < result.length; i++) {
         let status = result[i];
-        let statusDep = status.beginStatusLocation.code;
         let dep = airports.find(port => {
-            return port.airport_code === statusDep.toString();
+            return port.airport_code === status.beginStatusLocation.code;
         });
-        console.log(JSON.stringify(dep));
         let arr = airports.find(port => {
             return port.airport_code === status.endStatusLocation.code;
         });
@@ -42,9 +41,9 @@ let findFlightTypeErrors = (result) => {
 let determineDistance = (dep, arr) => {
     let routeType;
     let distance = calculateDistance(dep.latitude, dep.longitude, arr.latitude, arr.longitude);
-    if (distance > 5000) {
+    if (distance >= 5000) {
         routeType = "LONG_DISTANCE";
-    } else if (distance > 2000) {
+    } else if (distance >= 2000) {
         routeType = "MIDDLE_DISTANCE";
     } else {
         routeType = "SHORT_DISTANCE";
@@ -87,11 +86,8 @@ let findWrongTime = (result) => {
 
 let findTimeOverlap = (result) => {
     let timeErrors = 0;
-    for (let i = 0; i < result.length; i++) {
+    for (let i = 1; i < result.length; i++) {
         let status = result[i];
-        if (i === 0) {
-            continue;
-        }
         let predecessor = result[i - 1];
         if (status.beginStatusTime !== predecessor.endStatusTime) {
             timeErrors = timeErrors + 1;
