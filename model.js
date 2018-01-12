@@ -10,7 +10,6 @@ exports.determineStatus = aircraft => {
         statusList.push(status);
         predecessor = status;
     }
-    // console.log(JSON.stringify(statusList));
     return statusList;
 };
 
