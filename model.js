@@ -91,6 +91,13 @@ class Status {
         this.currentFlightNoIcao = 'AVI' + flightNo;
     }
 
+    determineFlightType(aircraft) {
+        let flightType = aircrafts.find(ac => {
+            return ac.ac_type_name === aircraft;
+        });
+        return flightType.type;
+    };
+
     determineAirports(predecessor, acFlightType) {
         let airportList = airports;
         if (predecessor !== null) {
@@ -133,13 +140,6 @@ class Status {
         }
         return flightType;
     }
-
-    determineFlightType(aircraft) {
-        let flightType = aircrafts.find(ac => {
-            return ac.ac_type_name === aircraft;
-        });
-        return flightType.type;
-    };
 
     determineTimes(predecessor, flightType) {
         if (predecessor !== null) {

@@ -75,10 +75,12 @@ let findDurationErrors = (result) => {
     let durationErrors = 0;
     for (let i = 0; i < result.length; i++) {
         let status = result[i];
-        let duration = (status.endStatusTime - status.beginStatusTime) / 60000;
         let statusType = statusList[status.status];
-        if (duration !== statusType.duration && statusType !== statusList.AIRBORNE) {
-            durationErrors = durationErrors + 1;
+        if (statusType !== statusList.AIRBORNE) {
+            let duration = (status.endStatusTime - status.beginStatusTime) / 60000;
+            if (duration !== statusType.duration) {
+                durationErrors = durationErrors + 1;
+            }
         }
     }
     return durationErrors;
