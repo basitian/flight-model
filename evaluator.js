@@ -9,8 +9,8 @@ let statusList = Object.freeze({
     AIRBORNE: {
         name: "AIRBORNE",
     },
-    ONGROUND: {
-        name: "ONGROUND",
+    GROUND_OPS: {
+        name: "GROUND_OPS",
         duration: 183
     },
     MAINTENANCE: {
