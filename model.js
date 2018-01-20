@@ -185,7 +185,7 @@ class Status {
             default:
                 duration = status.UNKNOWN.duration;
         }
-        let randomDifference = (Math.random() * 3600000) - 3600000;
+        let randomDifference = (Math.random() * 2*3600000) - 3600000;
         this.endStatusTime = new Date(this.beginStatusTime.getTime() + (duration * 60000) + randomDifference);
     };
 }
