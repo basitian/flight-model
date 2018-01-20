@@ -97,6 +97,9 @@ class Status {
         let flightType = aircrafts.find(ac => {
             return ac.ac_type_name === aircraft;
         });
+        if (flightType == null) {
+            throw "Aircraft Type not found";
+        }
         return flightType.type;
     };
 
@@ -180,9 +183,10 @@ class Status {
                 duration = status.UNPLANNEDMAINTENANCE.duration;
                 break;
             default:
-                duration = status.UNKNOWN;
+                duration = status.UNKNOWN.duration;
         }
-        this.endStatusTime = new Date(this.beginStatusTime.getTime() + (duration * 60000));
+        let randomDifference = (Math.random() * 3600000) - 3600000;
+        this.endStatusTime = new Date(this.beginStatusTime.getTime() + (duration * 60000) + randomDifference);
     };
 }
 
