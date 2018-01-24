@@ -8,8 +8,8 @@ let status = Object.freeze({
     AIRBORNE: {
         name: "AIRBORNE",
     },
-    ONGROUND: {
-        name: "ONGROUND",
+    GROUND_OPS: {
+        name: "GROUND_OPS",
         duration: 183
     },
     MAINTENANCE: {
@@ -59,7 +59,7 @@ class Status {
     constructor(aircraft, predecessor) {
         this.determineStatusType(predecessor);
         this.detailName = 'AircraftStatus';
-        this.updatedTimestamp = 0;
+        this.updatedTimestamp = null;
         this.eventType = null;
         this.eventName = null;
 
@@ -74,6 +74,8 @@ class Status {
         if (predecessor !== null) {
             this.aircraftId = predecessor.aircraftId;
             if (predecessor.status === status.AIRBORNE.name) {
+                this.currentFlightNo = null;
+                this.currentFlightNoIcao = null;
                 this.status = defineProbability(statusProbs);
             } else {
                 this.setAirborne();
@@ -168,8 +170,8 @@ class Status {
             case status.MAINTENANCE.name:
                 duration = status.MAINTENANCE.duration;
                 break;
-            case status.ONGROUND.name:
-                duration = status.ONGROUND.duration;
+            case status.GROUND_OPS.name:
+                duration = status.GROUND_OPS.duration;
                 break;
             case status.OVERHAUL.name:
                 duration = status.OVERHAUL.duration;
