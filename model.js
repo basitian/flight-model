@@ -2,9 +2,7 @@
 let airports = require('./airports.json');
 
 exports.determineStatus = () => {
-    let status = new Status(getDestination().airport_code, getDestination().airport_code, new Date(), getEnd());
-    console.log(JSON.stringify(status));
-    return status;
+    return new Status(getDestination().airport_code, getDestination().airport_code, new Date(), getEnd());
 };
 
 let getDestination = () => {

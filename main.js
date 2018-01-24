@@ -1,4 +1,4 @@
 'use strict';
 let model = require('./model.js');
 
-model.determineStatus();
+console.log(JSON.stringify(model.determineStatus()));
