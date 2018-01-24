@@ -33,16 +33,6 @@ let getAverageFlightTime = () => {
     console.log('Average flight duration: ' + time / (60000 * result.length) + ' minutes');
 };
 
-/* let getAverageFlightDistance = () => {
-    let distance = 0;
-    for (let i = 0; i < result.length; i++) {
-        let status = result[i];
-        distance = distance + ();
-    }
-    console.log('Average flight duration: ' + time / (60000 * result.length) + ' minutes');
-};
-*/
-
 let getMinFlightTime = () => {
     let minFlight = result[0];
     for (let i = 1; i < result.length; i++) {
