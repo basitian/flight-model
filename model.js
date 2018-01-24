@@ -44,10 +44,10 @@ let routeType = Object.freeze({
     }
 });
 
-exports.determineStatus = aircraft => {
+exports.determineStatus = (aircraft, count) => {
     let statusList = [];
     let predecessor = null;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < count; i++) {
         let status = new Status(aircraft, predecessor);
         statusList.push(status);
         predecessor = status;
