@@ -7,4 +7,4 @@ Dieses Modell realisiert die in der Bachelorarbeit beschriebenen
 Iterationen zur Erstellung eines Flugplanmodells.
 
 Die Anleitung zur Installation und zum Starten kann dem Anhang 
-der Arbeit entnommen werden. 
+der Arbeit entnommen werden.

@@ -44,10 +44,10 @@ let routeType = Object.freeze({
     }
 });
 
-exports.determineStatus = aircraft => {
+exports.determineStatus = (aircraft, count) => {
     let statusList = [];
     let predecessor = null;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < count; i++) {
         let status = new Status(aircraft, predecessor);
         statusList.push(status);
         predecessor = status;
@@ -74,8 +74,8 @@ class Status {
         if (predecessor !== null) {
             this.aircraftId = predecessor.aircraftId;
             if (predecessor.status === status.AIRBORNE.name) {
-                this.currentFlightNoIcao = null;
                 this.currentFlightNo = null;
+                this.currentFlightNoIcao = null;
                 this.status = defineProbability(statusProbs);
             } else {
                 this.setAirborne();
@@ -97,9 +97,6 @@ class Status {
         let flightType = aircrafts.find(ac => {
             return ac.ac_type_name === aircraft;
         });
-        if (flightType == null) {
-            throw "Aircraft Type not found";
-        }
         return flightType.type;
     };
 

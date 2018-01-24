@@ -1,22 +1,20 @@
 'use strict';
 let model = require('./model.js');
-let http = require('http');
-let url = require('url');
+const opn = require('opn');
 
-http.createServer((req, res) => {
-    let q = url.parse(req.url, true).query;
-    if (q.type == null) {
-        res.writeHead(500, {'Content-Type': 'text/html'});
-        res.end('Parameter type is missing!');
-    } else {
-        try {
-            let status = model.determineStatus(q.type);
-            res.writeHead(200, {'Content-Type': 'application/json'});
-            res.end(JSON.stringify(status));
-        } catch(e) {
-            res.writeHead(500, {'Content-Type': 'text/html'});
-            res.end(e);
-        }
+let args = process.argv.slice(2);
 
-    }
-}).listen(8080);
+let statusList = model.determineStatus(args[0] || 'A320', args[1] || 5);
+
+let queryString = '';
+
+statusList.forEach(status => {
+    let depCode = status.beginStatusLocation.code;
+    let arrCode = status.endStatusLocation.code;
+
+    queryString = queryString + depCode + '-' + arrCode + ';';
+});
+
+console.log(JSON.stringify(statusList));
+opn('http://www.greatcirclemap.com/globe?routes=' + queryString, {wait: false});
+
